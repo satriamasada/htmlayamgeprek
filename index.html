@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Geprek Maknyus - Pedas Mantap, Harga Bersahabat</title>
+    <meta name="description"
+        content="Ayam Geprek Maknyus menyajikan ayam geprek paling renyah dengan sambal bawang pilihan yang bikin nagih. Pesan sekarang!">
+    <link rel="stylesheet" href="style.css">
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body>
+
+    <header id="header">
+        <div class="logo">
+            <a href="index.html" style="color: inherit;"><i class="fas fa-fire"></i> GPK<span>MAKNYUS</span></a>
+        </div>
+        <div class="menu-toggle" id="menu-toggle">
+            <i class="fas fa-bars"></i>
+        </div>
+        <nav id="nav-menu">
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#menu">Menu</a></li>
+                <li><a href="#about">Tentang Kami</a></li>
+                <li><a href="#contact">Kontak</a></li>
+            </ul>
+        </nav>
+        <div class="nav-actions">
+            <div class="cart-icon-wrapper" id="open-cart">
+                <i class="fas fa-shopping-bag"></i>
+                <span class="cart-badge">0</span>
+            </div>
+            <button class="btn-primary">Pesan Sekarang</button>
+        </div>
+    </header>
+
+    <!-- Cart Drawer -->
+    <div class="cart-overlay" id="cart-overlay"></div>
+    <div class="cart-drawer" id="cart-drawer">
+        <div class="cart-header">
+            <h3>Keranjang Saya</h3>
+            <button id="close-cart"><i class="fas fa-times"></i></button>
+        </div>
+        <div class="cart-body" id="cart-items-list">
+            <div class="empty-cart-msg">Keranjang Anda kosong.</div>
+        </div>
+        <div class="cart-footer">
+            <div class="cart-total">
+                <span>Total:</span>
+                <span id="cart-total-price">Rp 0</span>
+            </div>
+            <button class="btn-primary" id="go-to-checkout" style="width: 100%;">Lanjut ke Pembayaran</button>
+        </div>
+    </div>
+
+    <!-- Checkout Modal -->
+    <div class="cart-overlay" id="checkout-modal-overlay" style="z-index: 2000;"></div>
+    <div class="checkout-modal" id="checkout-modal">
+        <div class="cart-header">
+            <h3>Pilih Metode Pembayaran</h3>
+            <button id="close-checkout"><i class="fas fa-times"></i></button>
+        </div>
+        <div class="checkout-options">
+            <button class="checkout-option-btn wa-btn" id="wa-checkout-btn">
+                <i class="fab fa-whatsapp"></i>
+                <div class="opt-text">
+                    <span>Order via WhatsApp</span>
+                    <p>Chat langsung ke admin kami</p>
+                </div>
+            </button>
+            <button class="checkout-option-btn mt-btn" id="mt-checkout-btn">
+                <i class="fas fa-credit-card"></i>
+                <div class="opt-text">
+                    <span>Bayar Sekarang (Midtrans)</span>
+                    <p>Transfer Bank, E-Wallet, Kartu Kredit</p>
+                </div>
+            </button>
+        </div>
+    </div>
+
+    <!-- Snap.js for Midtrans -->
+    <script src="https://app.sandbox.midtrans.com/snap/snap.js" data-client-key="Mid-client-XdCNxOfxTFcWxF68"></script>
+
+    <main>
+        <section class="hero" id="home">
+            <div class="container">
+                <div class="hero-content" data-aos>
+                    <h1>Sensasi <span>Pedas</span><br>Ayam Geprek Asli!</h1>
+                    <p>Kombinasi ayam goreng renyah dan sambal bawang rahasia yang diulek langsung. Pedasnya nendang,
+                        gurihnya mantap.</p>
+                    <div class="hero-btns">
+                        <button class="btn-primary">Lihat Menu</button>
+                        <button
+                            style="margin-left: 1rem; background: transparent; border: 2px solid var(--primary); color: var(--primary); padding: 0.75rem 1.75rem; border-radius: 50px; font-weight: 700; cursor: pointer;">Promo
+                            Hari Ini</button>
+                    </div>
+                </div>
+                <div class="hero-image" data-aos>
+                    <img src="../../brain/45cefea1-b16a-4c89-bfd1-71c9e43eb244/ayam_geprek_hero_1775957250974.png"
+                        alt="Ayam Geprek Maknyus">
+                </div>
+            </div>
+        </section>
+
+        <section class="menu" id="menu">
+            <div class="section-head" data-aos>
+                <h2>Menu <span>Andalan</span></h2>
+                <p>Pilih tingkat kepedasanmu dari level 1 sampai 10. Berani coba level tertinggi?</p>
+            </div>
+
+            <div class="menu-filters" data-aos>
+                <button class="filter-btn active" data-filter="semua">Semua</button>
+                <button class="filter-btn" data-filter="terlaris">Terlaris</button>
+                <button class="filter-btn" data-filter="favorit">Favorit</button>
+                <button class="filter-btn" data-filter="cemilan">Cemilan</button>
+                <button class="filter-btn" data-filter="minuman">Minuman</button>
+            </div>
+
+            <div class="menu-grid">
+                <!-- Item 1 -->
+                <div class="menu-card" data-category="terlaris" data-aos>
+                    <!-- <span class="badge">Terlaris</span> -->
+                    <div class="menu-card-img">
+                        <img src="../../brain/45cefea1-b16a-4c89-bfd1-71c9e43eb244/ayam_geprek_hero_1775957250974.png"
+                            alt="Geprek Original">
+                    </div>
+                    <div class="menu-card-content">
+                        <h3>Geprek Original</h3>
+                        <p style="color: var(--text-muted); margin-bottom: 1rem;">Ayam geprek + Sambal Bawang + Nasi
+                            Hangat</p>
+                        <div style="display: flex; justify-content: space-between; align-items: center;">
+                            <span class="price">Rp 15000</span>
+                            <button class="add-to-cart-btn" data-name="Geprek Original" data-price="15000">
+                                <i class="fas fa-plus-circle"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Item 2 -->
+                <div class="menu-card" data-category="favorit" data-aos>
+                    <!-- <span class="badge">Favorit</span> -->
+                    <div class="menu-card-img">
+                        <img src="../../brain/45cefea1-b16a-4c89-bfd1-71c9e43eb244/ayam_geprek_cheese_1775957267679.png"
+                            alt="Geprek Mozzarella">
+                    </div>
+                    <div class="menu-card-content">
+                        <h3>Geprek Mozzarella</h3>
+                        <p style="color: var(--text-muted); margin-bottom: 1rem;">Ayam geprek dengan keju mozzarella
+                            leleh</p>
+                        <div style="display: flex; justify-content: space-between; align-items: center;">
+                            <span class="price">Rp 22000</span>
+                            <button class="add-to-cart-btn" data-name="Geprek Mozzarella" data-price="22000">
+                                <i class="fas fa-plus-circle"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Item 3 -->
+                <div class="menu-card" data-category="cemilan" data-aos>
+                    <div class="menu-card-img">
+                        <img src="../../brain/45cefea1-b16a-4c89-bfd1-71c9e43eb244/crispy_skin_mushroom_1775957282454.png"
+                            alt="Kulit & Jamur Crispy">
+                    </div>
+                    <div class="menu-card-content">
+                        <h3>Combo Cemilan</h3>
+                        <p style="color: var(--text-muted); margin-bottom: 1rem;">Kulit ayam & jamur goreng super renyah
+                        </p>
+                        <div style="display: flex; justify-content: space-between; align-items: center;">
+                            <span class="price">Rp 12000</span>
+                            <button class="add-to-cart-btn" data-name="Combo Cemilan" data-price="12000">
+                                <i class="fas fa-plus-circle"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Item 4 -->
+                <div class="menu-card" data-category="minuman" data-aos>
+                    <div class="menu-card-img">
+                        <img src="../../brain/45cefea1-b16a-4c89-bfd1-71c9e43eb244/refreshing_drinks_1775957298753.png"
+                            alt="Minuman Segar">
+                    </div>
+                    <div class="menu-card-content">
+                        <h3>Minuman Segar</h3>
+                        <p style="color: var(--text-muted); margin-bottom: 1rem;">Melon Squash / Es Teh Jumbo</p>
+                        <div style="display: flex; justify-content: space-between; align-items: center;">
+                            <span class="price">Rp 5000</span>
+                            <button class="add-to-cart-btn" data-name="Minuman Segar" data-price="5000">
+                                <i class="fas fa-plus-circle"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Us Section -->
+        <section class="about" id="about">
+            <div class="about-container" data-aos>
+                <div class="about-text">
+                    <span class="subtitle">Kisah Kami</span>
+                    <h2>Dari Dapur Kecil ke <span>Hati Anda</span></h2>
+                    <p>Berawal dari kecintaan kami terhadap kuliner tradisional Indonesia, Geprek Maknyus lahir dengan
+                        misi sederhana: menyajikan ayam geprek otentik dengan kualitas bintang lima namun harga kaki
+                        lima.</p>
+                    <p>Kami menggunakan cabai pilihan langsung dari petani lokal dan ayam segar setiap harinya. Setiap
+                        porsi diulek secara mendadak untuk memastikan kesegaran rasa yang tak tertandingi.</p>
+                    <div class="stats">
+                        <div class="stat-item">
+                            <h4>50k+</h4>
+                            <p>Pelanggan Puas</p>
+                        </div>
+                        <div class="stat-item">
+                            <h4>15+</h4>
+                            <p>Cabang Outlet</p>
+                        </div>
+                        <div class="stat-item">
+                            <h4>24/7</h4>
+                            <p>Pelayanan</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="about-image">
+                    <img src="../../brain/45cefea1-b16a-4c89-bfd1-71c9e43eb244/ayam_geprek_hero_1775957250974.png"
+                        alt="About Us" class="floating">
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section class="contact" id="contact">
+            <div class="section-head" data-aos>
+                <h2>Hubungi <span>Kami</span></h2>
+                <p>Ada pertanyaan atau ingin kerja sama? Kami siap membantu Anda.</p>
+            </div>
+
+            <div class="contact-container" data-aos>
+                <div class="contact-info-centered">
+                    <div class="contact-card">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <div>
+                            <h4>Alamat</h4>
+                            <p>Jl. Pedas Berapi No. 69, Jakarta Selatan</p>
+                        </div>
+                    </div>
+                    <div class="contact-card">
+                        <i class="fas fa-phone"></i>
+                        <div>
+                            <h4>WhatsApp</h4>
+                            <p>+62 812 3456 7890</p>
+                        </div>
+                    </div>
+                    <div class="contact-card">
+                        <i class="fas fa-clock"></i>
+                        <div>
+                            <h4>Jam Buka</h4>
+                            <p>Setiap Hari: 10:00 - 22:00</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="contact-form-wrapper">
+                    <form class="contact-form">
+                        <div class="form-group-row">
+                            <input type="text" placeholder="Nama Lengkap" required>
+                            <input type="email" placeholder="Email" required>
+                        </div>
+                        <div class="form-group">
+                            <textarea placeholder="Pesan Anda" rows="5" required></textarea>
+                        </div>
+                        <button type="submit" class="btn-primary btn-submit">Kirim Pesan</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-info">
+                <h3>GPKMAKNYUS</h3>
+                <p>Membawa kebahagiaan lewat sepiring ayam geprek pedas sejak 2020.</p>
+                <div style="margin-top: 2rem; display: flex; gap: 1rem; font-size: 1.5rem;">
+                    <i class="fab fa-instagram"></i>
+                    <i class="fab fa-whatsapp"></i>
+                    <i class="fab fa-tiktok"></i>
+                </div>
+            </div>
+            <div class="footer-links">
+                <h4>Navigasi</h4>
+                <ul>
+                    <li><a href="index.html#about">Tentang Kami</a></li>
+                    <li><a href="lokasi.html">Lokasi Outlet</a></li>
+                    <li><a href="kemitraan.html">Kemitraan</a></li>
+                    <li><a href="karir.html">Karir</a></li>
+                </ul>
+            </div>
+            <div class="footer-links">
+                <h4>Bantuan</h4>
+                <ul>
+                    <li><a href="index.html#contact">Hubungi Kami</a></li>
+                    <li><a href="pembayaran.html">Metode Pembayaran</a></li>
+                    <li><a href="privasi.html">Kebijakan Privasi</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 Geprek Maknyus Indonesia. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
